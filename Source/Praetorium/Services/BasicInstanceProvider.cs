@@ -5,11 +5,11 @@ using System.ServiceModel.Dispatcher;
 
 namespace Praetorium.Services
 {
-    public class ServiceInstanceProvider : IInstanceProvider
+    public class BasicInstanceProvider : IInstanceProvider
     {
         private readonly Func<object> _serviceFactory;
 
-        public ServiceInstanceProvider(Func<object> serviceFactory)
+        public BasicInstanceProvider(Func<object> serviceFactory)
         {
             Ensure.ArgumentNotNull(() => serviceFactory, ref _serviceFactory);
         }
