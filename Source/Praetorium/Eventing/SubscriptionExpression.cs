@@ -11,11 +11,13 @@ namespace Praetorium.Eventing
             Ensure.ArgumentNotNull(() => eventAggregator, ref _eventAggregator);
         }
 
-        public IEventAggregator SendTo(Action<TEvent> handler)
+        public IDisposable SendTo(Action<TEvent> handler)
         {
-            _eventAggregator.RegisterListener(new SubscriptionListener<TEvent>(handler));
+            var listener = new SubscriptionListener<TEvent>(handler);
 
-            return _eventAggregator;
+            _eventAggregator.RegisterListener(listener);
+
+            return new ActionDisposable(() => _eventAggregator.UnregisterListener(listener));
         }
     }
 }
