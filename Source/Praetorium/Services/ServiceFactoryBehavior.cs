@@ -27,7 +27,7 @@ namespace Praetorium.Services
 
                 if (dispatcher != null)
                     foreach (var endpoint in dispatcher.Endpoints)
-                        endpoint.DispatchRuntime.InstanceProvider = new ServiceInstanceProvider(() => _typeFactory(serviceDescription.ServiceType));
+                        endpoint.DispatchRuntime.InstanceProvider = new BasicInstanceProvider(() => _typeFactory(serviceDescription.ServiceType));
             }
         }
 
