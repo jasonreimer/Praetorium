@@ -132,7 +132,6 @@
     <Compile Include="Services\ClientInspectorBehavior.cs" />
     <Compile Include="Services\ConfigurerServiceHost.cs" />
     <Compile Include="Services\DefaultEndpointNameAttribute.cs" />
-    <Compile Include="Services\DefaultServiceRegistry.cs" />
     <Compile Include="Services\DispatchInspectorBehavior.cs" />
     <Compile Include="Services\ErrorHandler.cs" />
     <Compile Include="Services\ErrorHandlerBehavior.cs" />

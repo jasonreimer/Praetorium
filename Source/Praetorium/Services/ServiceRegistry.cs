@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using System.ServiceModel.Description;
 
 namespace Praetorium.Services
 {
@@ -10,6 +11,17 @@ namespace Praetorium.Services
     /// </summary>
     public class ServiceRegistry : IRemoteServiceRegistry
     {
+        private readonly IEndpointBehavior[] _endpointBehaviors;
+
+        public ServiceRegistry(IEndpointBehavior[] endpointBehaviors)
+        {
+            _endpointBehaviors = endpointBehaviors ?? new IEndpointBehavior[0];
+        }
+
+        public ServiceRegistry()
+            : this(null)
+        {
+        }
 
         /// <summary>
         /// 
@@ -78,6 +90,8 @@ namespace Praetorium.Services
                 channelFactory.Credentials.UserName.UserName = properties.UserName;
                 channelFactory.Credentials.UserName.Password = properties.Password;
             }
+
+            _endpointBehaviors.ForEach(channelFactory.Endpoint.Behaviors.Add);
 
             return channelFactory;
         }
