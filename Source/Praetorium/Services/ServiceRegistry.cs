@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 using System.ServiceModel.Description;
 
 namespace Praetorium.Services
@@ -75,7 +76,6 @@ namespace Praetorium.Services
             Ensure.ArgumentNotNull(() => properties);
 
             EndpointAddress address = null;
-            ChannelFactory<TService> channelFactory = null;
 
             if (properties.ServiceConfigurationName.IsNullOrEmpty())
                 throw Errors.ServiceConfigurationNamePropertyIsRequired();
@@ -83,7 +83,7 @@ namespace Praetorium.Services
             if (properties.ServiceLocation.IsNotNullOrWhiteSpace())
                 address = new EndpointAddress(properties.ServiceLocation);
 
-            channelFactory = new ChannelFactory<TService>(properties.ServiceConfigurationName, address);
+            var channelFactory = new ChannelFactory<TService>(properties.ServiceConfigurationName, address);
 
             if (properties.UserName.IsNotNullOrWhiteSpace())
             {
@@ -91,7 +91,7 @@ namespace Praetorium.Services
                 channelFactory.Credentials.UserName.Password = properties.Password;
             }
 
-            _endpointBehaviors.ForEach(channelFactory.Endpoint.Behaviors.Add);
+            _endpointBehaviors.ForEach(b => AddBehavior(channelFactory.Endpoint.Behaviors, b));
 
             return channelFactory;
         }
@@ -115,6 +115,16 @@ namespace Praetorium.Services
             }
 
             return name;
+        }
+
+        protected virtual void AddBehavior(KeyedByTypeCollection<IEndpointBehavior> behaviors, IEndpointBehavior behavior)
+        {
+            var behaviorType = behavior.GetType();
+
+            if (behaviors.Contains(behaviorType))
+                behaviors.Remove(behaviorType);
+
+            behaviors.Add(behavior);
         }
     }
 }
