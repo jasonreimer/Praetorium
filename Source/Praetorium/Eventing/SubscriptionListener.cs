@@ -30,9 +30,7 @@ namespace Praetorium.Eventing
 
         public bool RelatesTo(object listener)
         {
-            var target = GetTarget();
-
-            return target != null && object.ReferenceEquals(listener, target);
+            return object.ReferenceEquals(listener, this);
         }
 
         private object GetTarget()
