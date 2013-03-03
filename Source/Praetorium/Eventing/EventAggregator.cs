@@ -61,7 +61,7 @@ namespace Praetorium.Eventing
                 _subscriptions.RemoveAll(sub => sub.IsDead);
 
                 return _subscriptions
-                            .Where(s => s.ListenerType.Is<IListener<TEvent>>())
+                            .Where(s => s is IListener<TEvent> || s.ListenerType.Is<IListener<TEvent>>())
                             .Select(s => s.GetListener<TEvent>())
                             .ToArray();
             }
