@@ -83,6 +83,7 @@
     <Compile Include="Eventing\ISubscriptionExpression.cs" />
     <Compile Include="Eventing\SubscriptionExpression.cs" />
     <Compile Include="Eventing\SubscriptionListener.cs" />
+    <Compile Include="Eventing\SynchronizedEventAggregator.cs" />
     <Compile Include="Eventing\WeakSubscription.cs" />
     <Compile Include="FactoryBase.cs" />
     <Compile Include="IBuilder.cs" />
