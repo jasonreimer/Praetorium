@@ -11,7 +11,7 @@ namespace Praetorium.Eventing
         {
             Ensure.ArgumentNotNull(() => listener);
 
-            _listenerReference = new WeakReference(_listenerReference, false);
+            _listenerReference = new WeakReference(listener, false);
             _listenerType = listener.GetType();
         }
 
