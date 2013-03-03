@@ -7,6 +7,6 @@ namespace Praetorium.Eventing
         Type ListenerType { get; }
         bool IsDead { get; }
         bool RelatesTo(object listener);
-        object GetListener();
+        IListener<TEvent> GetListener<TEvent>() where TEvent : class;
     }
 }

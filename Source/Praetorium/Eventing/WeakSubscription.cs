@@ -25,9 +25,9 @@ namespace Praetorium.Eventing
             get { return _listenerType; }
         }
 
-        public object GetListener()
+        public IListener<TEvent> GetListener<TEvent>() where TEvent : class
         {
-            return _listenerReference.Target;
+            return _listenerReference.Target as IListener<TEvent>;
         }
 
         public bool RelatesTo(object listener)

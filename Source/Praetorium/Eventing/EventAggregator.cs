@@ -15,6 +15,11 @@ namespace Praetorium.Eventing
             this.RegisterListeners(listeners);
         }
 
+        public EventAggregator()
+            : this(null)
+        {
+        }
+
         public virtual IEventAggregator Send<TEvent>(TEvent @event) where TEvent : class
         {
             Ensure.ArgumentNotNull(() => @event);
@@ -56,7 +61,8 @@ namespace Praetorium.Eventing
                 _subscriptions.RemoveAll(sub => sub.IsDead);
 
                 return _subscriptions
-                            .OfType<IListener<TEvent>>()
+                            .Where(s => s.ListenerType.Is<IListener<TEvent>>())
+                            .Select(s => s.GetListener<TEvent>())
                             .ToArray();
             }
         }

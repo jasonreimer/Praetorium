@@ -43,9 +43,9 @@ namespace Praetorium.Eventing
             get { return GetType(); }
         }
 
-        public object GetListener()
+        public IListener<TEvent> GetListener<TEvent>() where TEvent : class
         {
-            return this;
+            return this as IListener<TEvent>;
         }
     }
 }
