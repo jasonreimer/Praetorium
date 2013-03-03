@@ -13,7 +13,6 @@ namespace Praetorium.Services
         public readonly string FullTypeName;
         public readonly string Name;
         public readonly string Namespace;
-        public readonly bool IsDisposable;
         public readonly bool HasName;
         public readonly bool IsInterface;
 
@@ -37,7 +36,6 @@ namespace Praetorium.Services
             TypeName = serviceType.Name;
             FullTypeName = serviceType.FullName;
             IsInterface = serviceType.IsInterface;
-            IsDisposable = typeof(IDisposable).IsAssignableFrom(serviceType);
             Name = serviceContractAttrib.Name.TrimToNull();
             Namespace = serviceContractAttrib.Namespace.TrimToNull();
             HasName = Name != null;
