@@ -8,10 +8,12 @@
     <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
     <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Package description</description>
-    <releaseNotes>Foundational extensions, helpers and classes for .Net development.</releaseNotes>
+    <description>Foundational extensions, helpers and classes for .Net development.</description>
     <tags>foundation utilities extensions helpers events</tags>
     <dependencies>
     </dependencies>
   </metadata>
+  <files>
+    <file src="..\..\Builds\net40\Praetorium.dll" target="lib\net40" />
+  </files>
 </package>
