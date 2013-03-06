@@ -8,6 +8,67 @@ namespace Praetorium
     {
 
         /// <summary>
+        /// Throws an ArgumentNullException if the <paramref name="argumentValue" /> is null.
+        /// </summary>
+        /// <param name="argumentValue">The value to check.</param>
+        /// <param name="argumentName">
+        /// The name of the parameter in the calling method or property.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown if <paramref name="argumentValue" /> is null.
+        /// </exception>
+        public static void ArgumentNotNull(object argumentValue, string argumentName)
+        {
+            if (argumentValue == null)
+                throw Errors.ArgumentNull(argumentName);
+        }
+
+        /// <summary>
+        /// Throws an ArgumentException if the <paramref name="argumentValue" /> is null, or an empty string.  
+        /// This method ignores spaces.
+        /// </summary>
+        /// <param name="argumentValue">The string.</param>
+        /// <param name="argumentName">
+        /// The name of the parameter in the calling method or property.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <paramref name="argumentValue" /> is null or empty.
+        /// </exception>
+        public static void ArgumentNotNullOrWhiteSpace(string argumentValue, string argumentName)
+        {
+            if (argumentValue.IsNullOrWhiteSpace())
+                throw Errors.ArgumentNullOrEmpty(argumentName);
+        }
+
+        public static void EnumValueIsDefined<TEnum>(TEnum argumentValue, string argumentName)
+        {
+            var enumType = typeof(TEnum);
+
+            if (!enumType.IsEnum)
+                throw Errors.NotAnEnumType(argumentName);
+
+            if (!Enum.IsDefined(typeof(TEnum), argumentValue))
+                throw Errors.InvalidEnumValue(argumentName, enumType.Name);
+        }
+
+        /// <summary>
+        /// Ensures that the type of the <paramref name="providedType" /> is compatible with 
+        /// a given <see cref="expectedType"/>
+        /// </summary>
+        /// <param name="expectedType">The type that is expected by the calling method.</param>
+        /// <param name="providedType">The type that was provided to the calling method.</param>
+        /// <param name="argumentName">The name of the parameter in the calling method.</param>
+        /// <exception cref="ArgumentException">
+        /// Throw if the <paramref name="providedType" /> is not compatible with the
+        /// <see cref="expectedType" />.
+        /// </exception>
+        public static void TypeSupported(Type expectedType, Type providedType, string argumentName)
+        {
+            if (!providedType.Is(expectedType))
+                throw Errors.TypeNotSupported(argumentName, expectedType.FullName);
+        }
+
+        /// <summary>
         /// Throws an ArgumentNullException if the <paramref name="argumentExpression" /> is null.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -18,9 +79,7 @@ namespace Praetorium
         public static void ArgumentNotNull<T>(Func<T> argumentExpression) where T : class
         {
             if (argumentExpression() == null)
-            {
                 throw Errors.ArgumentNull(ReflectionUtility.GetArgumentName(argumentExpression));
-            }
         }
 
         /// <summary>
@@ -140,12 +199,6 @@ namespace Praetorium
                 string argumentName = ReflectionUtility.GetArgumentName(argumentExpression);
                 throw Errors.TypeNotSupported(argumentName, expectedType.FullName);
             }
-        }
-
-        public static void TypeSupported(Type expectedType, Type providedType, string argumentName)
-        {
-            if (!expectedType.IsAssignableFrom(providedType))
-                throw Errors.TypeNotSupported(argumentName, expectedType.FullName);
         }
 
         public static T ReturnIsNotNull<T>(T value) where T : class

@@ -22,7 +22,12 @@ namespace Praetorium
         /// <returns></returns>
         public static string Capitalize(this string value)
         {
+#if !SILVERLIGHT
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+#else
+            //TODO: fix
+            return "";
+#endif
         }
 
         /// <summary>

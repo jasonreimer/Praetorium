@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{035BAD7B-C062-4489-BCB6-FC96D3C406F0}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Praetorium</RootNamespace>
+    <AssemblyName>Praetorium.SL5</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Praetorium\ActionDisposable.cs">
+      <Link>ActionDisposable.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\ActionExtensions.cs">
+      <Link>ActionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\BasicExtensions.cs">
+      <Link>BasicExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\CollectionExtensions.cs">
+      <Link>CollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Collections\DictionaryWrapper.cs">
+      <Link>Collections\DictionaryWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Collections\FuncKeyedCollection.cs">
+      <Link>Collections\FuncKeyedCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Collections\NamedItemCollection.cs">
+      <Link>Collections\NamedItemCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Configuration\ConfigReaderExtensions.cs">
+      <Link>Configuration\ConfigReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Configuration\DefaultSectionNameAttribute.cs">
+      <Link>Configuration\DefaultSectionNameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Configuration\IConfigReader.cs">
+      <Link>Configuration\IConfigReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\ContextBase.cs">
+      <Link>Contexts\ContextBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\ContextExtensions.cs">
+      <Link>Contexts\ContextExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\DictionaryContext.cs">
+      <Link>Contexts\DictionaryContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\IActivityContext.cs">
+      <Link>Contexts\IActivityContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\IContext.cs">
+      <Link>Contexts\IContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\IContextBridge.cs">
+      <Link>Contexts\IContextBridge.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\ISessionContext.cs">
+      <Link>Contexts\ISessionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Contexts\ThreadContext.cs">
+      <Link>Contexts\ThreadContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\ConversionExtensions.cs">
+      <Link>ConversionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\DateTimeExtensions.cs">
+      <Link>DateTimeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\DictionaryExtensions.cs">
+      <Link>DictionaryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\DisposableExtensions.cs">
+      <Link>DisposableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Ensure.cs">
+      <Link>Ensure.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Errors.cs">
+      <Link>Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\EventAggregator.cs">
+      <Link>Eventing\EventAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\EventAggregatorExtensions.cs">
+      <Link>Eventing\EventAggregatorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\IEventAggregator.cs">
+      <Link>Eventing\IEventAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\IEventSubscription.cs">
+      <Link>Eventing\IEventSubscription.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\ISubscriptionExpression.cs">
+      <Link>Eventing\ISubscriptionExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\SubscriptionExpression.cs">
+      <Link>Eventing\SubscriptionExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\SubscriptionListener.cs">
+      <Link>Eventing\SubscriptionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\SynchronizedEventAggregator.cs">
+      <Link>Eventing\SynchronizedEventAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Eventing\WeakSubscription.cs">
+      <Link>Eventing\WeakSubscription.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\FactoryBase.cs">
+      <Link>FactoryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IBuilder.cs">
+      <Link>IBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\ICancelable.cs">
+      <Link>ICancelable.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IHasSubject.cs">
+      <Link>IHasSubject.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IListener.cs">
+      <Link>IListener.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\INamedItem.cs">
+      <Link>INamedItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IOExtensions.cs">
+      <Link>IOExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\ISerializer.cs">
+      <Link>ISerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IStartable.cs">
+      <Link>IStartable.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\IWorkItem.cs">
+      <Link>IWorkItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\KeyedCollectionExtensions.cs">
+      <Link>KeyedCollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ExceptionFormatterBuilder.cs">
+      <Link>Logging\ExceptionFormatterBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ExceptionFormatterConfigurationException.cs">
+      <Link>Logging\ExceptionFormatterConfigurationException.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ExceptionFormatterExtensions.cs">
+      <Link>Logging\ExceptionFormatterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ExceptionFormatterFactory.cs">
+      <Link>Logging\ExceptionFormatterFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\FaultExceptionFormatter.cs">
+      <Link>Logging\FaultExceptionFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\IExceptionFormatter.cs">
+      <Link>Logging\IExceptionFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\IExceptionFormatterBuilder.cs">
+      <Link>Logging\IExceptionFormatterBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\IExceptionFormatterFactory.cs">
+      <Link>Logging\IExceptionFormatterFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ILogEntry.cs">
+      <Link>Logging\ILogEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ILogger.cs">
+      <Link>Logging\ILogger.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ILoggerFactory.cs">
+      <Link>Logging\ILoggerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\ILoggingConfigurer.cs">
+      <Link>Logging\ILoggingConfigurer.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\LogEntry.cs">
+      <Link>Logging\LogEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\LoggerBase.cs">
+      <Link>Logging\LoggerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\LoggingConfigurerStub.cs">
+      <Link>Logging\LoggingConfigurerStub.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\LoggingExtensions.cs">
+      <Link>Logging\LoggingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\LogLevel.cs">
+      <Link>Logging\LogLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\NulloLogger.cs">
+      <Link>Logging\NulloLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\NulloLoggerFactory.cs">
+      <Link>Logging\NulloLoggerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Logging\TextExceptionFormatter.cs">
+      <Link>Logging\TextExceptionFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\NullHandlerExtensions.cs">
+      <Link>NullHandlerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\PostConditionException.cs">
+      <Link>PostConditionException.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\PrimitiveExtensions.cs">
+      <Link>PrimitiveExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Properties\Resources.Designer.cs">
+      <Link>Resources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\StringBuilderExtensions.cs">
+      <Link>StringBuilderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\StringExtensions.cs">
+      <Link>StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Threading\DefaultThreadPool.cs">
+      <Link>Threading\DefaultThreadPool.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Threading\IThreadPool.cs">
+      <Link>Threading\IThreadPool.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Threading\ThreadWorkItem.cs">
+      <Link>Threading\ThreadWorkItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Throw.cs">
+      <Link>Throw.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\TypeExtensions.cs">
+      <Link>TypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Utilities\ConversionUtility.cs">
+      <Link>Utilities\ConversionUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Utilities\ReflectionUtility.cs">
+      <Link>Utilities\ReflectionUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\Praetorium\Utilities\StringUtility.cs">
+      <Link>Utilities\StringUtility.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Praetorium\Properties\Resources.resx">
+      <Link>Resources.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Encryption\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkReference="c3472c59-fb7d-48fa-afee-ab0a6d185272" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

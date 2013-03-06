@@ -151,6 +151,7 @@ namespace Praetorium
             return sourceType.GetMethod(methodName, AllInstanceScopes) != null;
         }
 
+#if !SILVERLIGHT
         /// <summary>
         /// Finds the root stack frame relative to the <paramref name="rootType"/>, and 
         /// returns a new <see cref="T:System.Diagnostics.StackTrace"/> instance with 
@@ -163,7 +164,7 @@ namespace Praetorium
             Ensure.ArgumentNotNull(() => rootType);
 
             var rootTrace = new StackTrace();
-            var skipFrameCount = 0;
+            int skipFrameCount = 0;
 
             foreach (var frame in rootTrace.GetFrames())
             {
@@ -178,6 +179,7 @@ namespace Praetorium
 
             return rootTrace;
         }
+#endif
 
         /// <summary>
         /// Gets the <see cref="T:System.Reflection.PropertyInfo"/> for the 

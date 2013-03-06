@@ -1,7 +1,10 @@
 ﻿using Praetorium.Logging;
 using Praetorium.Properties;
-using Praetorium.Services;
 using System;
+
+#if !SILVERLIGHT
+using Praetorium.Services;
+#endif
 
 namespace Praetorium
 {
@@ -17,11 +20,6 @@ namespace Praetorium
             return new InvalidOperationException(Resources.NoCurrentHttpContext);
         }
 
-        internal static Exception TypeNotServiceContract(string fullTypeName)
-        {
-            return new TypeNotServiceContractException(string.Format(Resources.TypeNotServiceContract, fullTypeName));
-        }
-
         internal static Exception ChannelFactoriesDisposed()
         {
             return new ObjectDisposedException(Resources.ChannelFactoriesDisposed);
@@ -30,26 +28,6 @@ namespace Praetorium
         internal static Exception TypeDoesNotSpecifySectionName()
         {
             return new ArgumentException(Resources.TypeDoesNotSpecifySectionName, "TSection");
-        }
-
-        internal static Exception ServiceTypeCacheUnexpectedException(Type serviceContractType, Exception exception)
-        {
-            return new ServiceTypeCacheException(string.Format(Resources.ServiceTypeCacheUnexpectedException, serviceContractType.FullName), exception);
-        }
-
-        internal static Exception ChannelFactoryWithNoEndpointException(string serviceContractFullName)
-        {
-            return new ServiceRegistryException(string.Format(Resources.ChannelFactoryWithNoEndpoint, serviceContractFullName));
-        }
-
-        internal static Exception ServiceConfigurationNamePropertyIsRequired()
-        {
-            return new ServiceRegistryException(Resources.ServiceConfigurationNameRequired);
-        }
-
-        internal static Exception ChannelFactoryCouldNotBeCreated(Type serviceContractType, string endpointConfigurationName, Exception innerException)
-        {
-            return new ServiceRegistryException(string.Format(Resources.ChannelFactoryCreateFailed, serviceContractType.FullName, endpointConfigurationName), innerException);
         }
 
         internal static Exception ExceptionFormatterConfigurationInvalid(string reasons)
@@ -106,5 +84,32 @@ namespace Praetorium
         {
             return new PostConditionException(string.Format(Resources.ReturnValueIsTheDefaultExceptionMessage, methodSignature));
         }
+
+#if !SILVERLIGHT
+        internal static Exception TypeNotServiceContract(string fullTypeName)
+        {
+            return new TypeNotServiceContractException(string.Format(Resources.TypeNotServiceContract, fullTypeName));
+        }
+
+        internal static Exception ServiceTypeCacheUnexpectedException(Type serviceContractType, Exception exception)
+        {
+            return new ServiceTypeCacheException(string.Format(Resources.ServiceTypeCacheUnexpectedException, serviceContractType.FullName), exception);
+        }
+
+        internal static Exception ChannelFactoryWithNoEndpointException(string serviceContractFullName)
+        {
+            return new ServiceRegistryException(string.Format(Resources.ChannelFactoryWithNoEndpoint, serviceContractFullName));
+        }
+
+        internal static Exception ServiceConfigurationNamePropertyIsRequired()
+        {
+            return new ServiceRegistryException(Resources.ServiceConfigurationNameRequired);
+        }
+
+        internal static Exception ChannelFactoryCouldNotBeCreated(Type serviceContractType, string endpointConfigurationName, Exception innerException)
+        {
+            return new ServiceRegistryException(string.Format(Resources.ChannelFactoryCreateFailed, serviceContractType.FullName, endpointConfigurationName), innerException);
+        }
+#endif
     }
 }

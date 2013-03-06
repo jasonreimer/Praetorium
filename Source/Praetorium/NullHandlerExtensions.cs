@@ -59,8 +59,11 @@ namespace Praetorium
             {
                 try
                 {
+#if !SILVERLIGHT
                     T convertedValue = (T)Convert.ChangeType(value, typeof(T));
-
+#else
+                    T convertedValue = (T)Convert.ChangeType(value, typeof(T), null);
+#endif
                     if (!convertedValue.Equals(default(T)))
                         return convertedValue;
                 }

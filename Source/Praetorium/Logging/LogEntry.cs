@@ -2,7 +2,6 @@
 
 namespace Praetorium.Logging
 {
-    [Serializable]
     public class LogEntry : ILogEntry
     {
 

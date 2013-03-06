@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace Praetorium.Logging
+﻿namespace Praetorium.Logging
 {
-    [Serializable]
     public enum LogLevel
     {
         Trace,

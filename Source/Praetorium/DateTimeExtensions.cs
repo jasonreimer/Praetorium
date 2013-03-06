@@ -1,5 +1,7 @@
 ﻿using System;
+#if !SILVERLIGHT
 using System.Data.SqlTypes;
+#endif
 
 namespace Praetorium
 {

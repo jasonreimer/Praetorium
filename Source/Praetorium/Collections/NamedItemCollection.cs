@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace Praetorium.Collections
 {
+#if !SILVERLIGHT
     [Serializable]
+#endif
     public class NamedItemCollection<TName, TItem> : KeyedCollection<TName, TItem> where TItem : INamedItem<TName>
     {
 

@@ -121,10 +121,12 @@ namespace Praetorium.Logging
             messageWriter.WriteLine("Exception: {0}", exception.GetType().FullName);
             messageWriter.WriteLine("Message: {0}", exception.Message);
 
+#if !SILVERLIGHT
             if (exception.Source.IsNotNullOrWhiteSpace())
             {
                 messageWriter.WriteLine("Source: {0}", exception.Source);
             }
+#endif
 
             if (exception.StackTrace.IsNotNullOrWhiteSpace())
             {

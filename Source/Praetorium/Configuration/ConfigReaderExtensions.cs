@@ -1,6 +1,11 @@
 ﻿using Praetorium.Properties;
+#if SILVERLIGHT
+using System;
+#endif
+#if !SILVERLIGHT
 using System.Configuration;
-    
+#endif
+
 namespace Praetorium.Configuration
 {
     public static class ConfigReaderExtensions
@@ -41,7 +46,12 @@ namespace Praetorium.Configuration
 
             if (setting.IsNullOrWhiteSpace())
             {
-                throw new ConfigurationErrorsException(string.Format(Resources.ConfigurationSettingMissingOrInvalid, settingName));
+                var message = string.Format(Resources.ConfigurationSettingMissingOrInvalid, settingName);
+#if !SILVERLIGHT
+                throw new ConfigurationErrorsException(message);
+#else
+                throw new Exception(message);
+#endif
             }
 
             return setting;
