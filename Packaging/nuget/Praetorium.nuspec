@@ -2,18 +2,19 @@
 <package >
   <metadata>
     <id>Praetorium</id>
-    <version>1.0.0</version>
+    <version>1.0.1.0</version>
     <authors>Jason Reimer</authors>
     <owners>Jason Reimer</owners>
     <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
     <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Foundational extensions, helpers and classes for .Net development.</description>
-    <tags>foundation utilities extensions helpers events</tags>
+    <tags>foundation utilities extensions helpers events silverlight</tags>
     <dependencies>
     </dependencies>
   </metadata>
   <files>
     <file src="..\..\Builds\net40\Praetorium.dll" target="lib\net40" />
+    <file src="..\..\Builds\sl5\Praetorium.dll" target="lib\sl5" />
   </files>
 </package>
