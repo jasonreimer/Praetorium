@@ -92,7 +92,7 @@ namespace Praetorium
 
         public static bool IsStringConstant(this FieldInfo field)
         {
-            Ensure.ArgumentNotNull(() => field);
+            if (field == null) return false;
 
             return field.IsLiteral && field.FieldType.IsString();
         }
