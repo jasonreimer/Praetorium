@@ -129,7 +129,6 @@
     </Compile>
     <Compile Include="Services\BasicInstanceProvider.cs" />
     <Compile Include="Services\CachedChannelServiceRegistry.cs" />
-    <Compile Include="Services\CachedServiceRegistry.cs" />
     <Compile Include="Services\ClientInspectorBehavior.cs" />
     <Compile Include="Services\ConfigurerServiceHost.cs" />
     <Compile Include="Services\DefaultEndpointNameAttribute.cs" />
