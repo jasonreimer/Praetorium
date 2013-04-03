@@ -12,13 +12,6 @@ namespace Praetorium
             return t;
         }
 
-        public static T IfNoNull<T>(this T t, Action<T> action) where T : class
-        {
-            if (t != null)
-                action(t);
-
-            return t;
-        }
 
         public static R IfNotNull<T, R>(this T t, Func<T, R> action) where T : class
         {
