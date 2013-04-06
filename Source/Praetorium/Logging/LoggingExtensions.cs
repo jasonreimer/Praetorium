@@ -14,6 +14,11 @@ namespace Praetorium.Logging
             Log(logger, LogLevel.Error, message);
         }
 
+        public static void Debug(this ILogger logger, Exception exception)
+        {
+            logger.Log(LogLevel.Debug, exception);
+        }
+
         public static void Error(this ILogger logger, string message, params object[] args)
         {
             logger.Log(LogLevel.Error, message, args);
@@ -22,6 +27,11 @@ namespace Praetorium.Logging
         public static void Error(this ILogger logger, Func<string> message)
         {
             Log(logger, LogLevel.Error, message);
+        }
+
+        public static void Error(this ILogger logger, Exception exception)
+        {
+            logger.Log(exception);
         }
 
         private static void Log(ILogger logger, LogLevel logLevel, Func<string> message)
