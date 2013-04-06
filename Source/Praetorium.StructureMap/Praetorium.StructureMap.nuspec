@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Praetorium.StructureMap</id>
+        <version>1.0.0.2</version>
+        <title>Praetorium.StructureMap</title>
+        <authors>Jason Reimer</authors>
+        <owners>Jason Reimer</owners>
+        <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
+        <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>StructureMap registry and extensions for Praetorium</description>
+        <releaseNotes />
+        <copyright />
+        <dependencies>
+            <dependency id="Praetorium" version="1.0.1.0" />
+            <dependency id="structuremap" version="2.6.4.1" />
+        </dependencies>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System.ServiceModel" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+</package>
