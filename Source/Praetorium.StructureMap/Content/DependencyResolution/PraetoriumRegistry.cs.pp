@@ -1,4 +1,20 @@
-﻿using Praetorium.Configuration;
+﻿// ----------------------------------------------------------------------------
+// Copyright 2013 Jason Reimer
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------
+
+using Praetorium.Configuration;
 using Praetorium.Eventing;
 using Praetorium.Logging;
 using Praetorium.Services;
@@ -27,38 +43,18 @@ namespace $rootnamespace$.DependencyResolution
             ForSingletonOf<IExceptionFormatterFactory>().Use<ExceptionFormatterFactory>();
             For<IExceptionFormatter>().Add<FaultExceptionFormatter>();
 
-            // Events
+            // events
             ForSingletonOf<IEventAggregator>().Use<EventAggregator>();
             
             // WCF
             For<IServiceRegistry>().Use<ServiceRegistry>();
             For<IServiceProxy>().Use<ServiceProxy>();
-            For<IFaultFactory>().Use<FaultFactory>();
-            //For<IServiceConfigurer>().Use<XXX>();
-            
-            // Fault Builders
-            //For<IFaultBuilder>().Add<XXX>();
-        }
-        
-        private void RegisterServiceBehaviors()
-        {
-            Scan(x =>
-            {
-                x.TheCallingAssembly();
-                x.AddAllTypesOf<IServiceBehavior>();
-            });
         }
 
         private void RegisterClientInspector<TInspector>() where TInspector : class, IClientMessageInspector
         {
             For<TInspector>().Use<TInspector>();
             For<IEndpointBehavior>().Add<ClientInspectorBehavior<TInspector>>();
-        }
-
-        private void RegisterDispatchInspector<TInspector>() where TInspector : class, IDispatchMessageInspector
-        {
-            For<TInspector>().Use<TInspector>();
-            For<IServiceBehavior>().Add<DispatchInspectorBehavior<TInspector>>();
         }
     }
 }

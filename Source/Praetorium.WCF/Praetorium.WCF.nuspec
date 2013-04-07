@@ -1,23 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>Praetorium.StructureMap</id>
-        <version>1.0.0.6</version>
-        <title>Praetorium.StructureMap</title>
+        <id>Praetorium.WCF</id>
+        <version>1.0.0.3</version>
+        <title>Praetorium.WCF</title>
         <authors>Jason Reimer</authors>
         <owners>Jason Reimer</owners>
         <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
         <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>StructureMap registry and extensions for Praetorium</description>
+        <description>WCF code templates</description>
         <releaseNotes />
         <copyright />
         <dependencies>
-            <dependency id="structuremap" version="2.6.4.1" />
             <dependency id="Praetorium" />
+            <dependency id="Praetorium.StructureMap" />
         </dependencies>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System.ServiceModel" targetFramework="" />
+            <frameworkAssembly assemblyName="System.ServiceModel.Activation" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
         </frameworkAssemblies>
     </metadata>
 </package>

@@ -1,0 +1,27 @@
+<configuration>
+  <system.web>
+    <compilation debug="true" targetFramework="4.0" />
+  </system.web>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding maxReceivedMessageSize="2000000"
+                 maxBufferSize="2000000"
+                 maxBufferPoolSize="2000000">
+          <readerQuotas maxDepth="32"
+               maxArrayLength="20000000"
+               maxStringContentLength="2000000"/>
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <protocolMapping>
+      <remove scheme="net.pipe" />
+      <remove scheme="net.msmq" />
+    </protocolMapping>
+    <serviceHostingEnvironment >
+      <serviceActivations>
+        <add service="SampleService" factory="Praetorium.Services.InjectedServiceHostFactory" relativeAddress="SampleService.svc" />
+      </serviceActivations>
+    </serviceHostingEnvironment>
+  </system.serviceModel>
+</configuration>
