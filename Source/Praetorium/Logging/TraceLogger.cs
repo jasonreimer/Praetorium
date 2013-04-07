@@ -43,7 +43,7 @@ namespace Praetorium.Logging
             if (exception != null)
                 messageBuilder.AppendLine(ExceptionFormatterFactory.Format(exception));
 
-            _traceSource.TraceEvent(ConvertToTraceEventType(entry.Level), _defaultEventId, messageBuilder.ToString());
+            _traceSource.TraceEvent(ConvertToTraceEventType(logLevel), _defaultEventId, messageBuilder.ToString());
         }
 
         public override void Log(ILogEntry logEntry)
