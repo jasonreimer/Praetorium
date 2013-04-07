@@ -3,11 +3,11 @@ using System.ServiceModel;
 
 namespace Praetorium.Services
 {
-    public class ConfigurerServiceHost : ServiceHost
+    public class InjectedServiceHost : ServiceHost
     {
         private readonly IServiceConfigurer _serviceConfigurer;
 
-        public ConfigurerServiceHost(IServiceConfigurer serviceConfigurer, Type serviceType, Uri[] baseAddresses)
+        public InjectedServiceHost(IServiceConfigurer serviceConfigurer, Type serviceType, Uri[] baseAddresses)
             : base(serviceType, baseAddresses)
         {
             Ensure.ArgumentNotNull(() => serviceConfigurer, ref _serviceConfigurer);
