@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Praetorium.NLog</id>
+        <version>1.0.0</version>
+        <authors>Jason Reimer</authors>
+        <owners>Jason Reimer</owners>
+        <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
+        <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Praetorium adapter for NLog.</description>
+        <tags>NLog</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="Praetorium" />
+                <dependency id="NLog" />
+            </group>
+            <group targetFramework="Silverlight5.0">
+                <dependency id="Praetorium" />
+                <dependency id="NLog" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\..\Builds\net40\Praetorium.NLog.dll" target="lib\net40\Praetorium.NLog.dll" />
+        <file src="..\..\Builds\sl5\Praetorium.NLog.SL5.dll" target="lib\sl5\Praetorium.NLog.SL5.dll" />
+    </files>
+</package>
