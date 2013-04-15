@@ -90,6 +90,16 @@ namespace $rootnamespace$
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
+        IQueryable<T> IQueryProvider.Query<T>() 
+        {
+            return Set<T>().AsNoTracking();
+        }
+
+        IEnumerable<T> IQueryProvider.SqlQuery<T>(string sql, params object[] parameters)
+        {
+            return Database.SqlQuery<T>(sql, parameters);
+        }
+
         void IStartable.Start()
         {
             //TODO: if auto-migration at startup is desired, kick off migrations by counting one of the entities here...
