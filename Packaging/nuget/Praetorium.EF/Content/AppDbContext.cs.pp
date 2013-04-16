@@ -22,7 +22,7 @@ using System.Linq;
 
 namespace $rootnamespace$
 {
-    public class AppDbContext : DbContext, IRepository, IStartable
+    public class AppDbContext : DbContext, IRepository, IQueryProvider, IStartable
     {
         public AppDbContext()
             : base(ConnectionNames.Primary)
