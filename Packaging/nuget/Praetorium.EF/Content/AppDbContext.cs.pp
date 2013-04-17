@@ -51,7 +51,8 @@ namespace $rootnamespace$
             if (rootEntity is IValidatableAggregateRoot)
                 ((IValidatableAggregateRoot)rootEntity).CanSave();
 
-            Set<TEntity>().Add(rootEntity);
+			if (ChangeTracker.Entries<TEntity>().None(x => object.ReferenceEquals(x.Entity, rootEntity)))
+				Set<TEntity>().Add(rootEntity);
         }
 
         public void Save<TEntity>(IEnumerable<TEntity> rootEntities) where TEntity : class, IAggregateRoot
@@ -86,11 +87,11 @@ namespace $rootnamespace$
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             AutoMap<AutoMappingConfiguration>.Using(modelBuilder);
-            
+
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
-        IQueryable<T> IQueryProvider.Query<T>() 
+        IQueryable<T> IQueryProvider.Query<T>()
         {
             return Set<T>().AsNoTracking();
         }
