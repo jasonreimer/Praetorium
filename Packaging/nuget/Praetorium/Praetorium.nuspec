@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Praetorium</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>Jason Reimer</authors>
     <owners>Jason Reimer</owners>
     <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
@@ -14,7 +14,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\Builds\net40\Praetorium.dll" target="lib\net40" />
-    <file src="..\..\Builds\sl5\Praetorium.SL5.dll" target="lib\sl5" />
+    <file src="..\..\..\Builds\net40\Praetorium.dll" target="lib\net40" />
+    <file src="..\..\..\Builds\sl5\Praetorium.SL5.dll" target="lib\sl5" />
   </files>
 </package>
