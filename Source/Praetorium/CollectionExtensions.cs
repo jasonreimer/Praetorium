@@ -128,5 +128,17 @@ namespace Praetorium
 
             return -1;
         }
+
+        public static bool None<T>(this IEnumerable<T> items, Func<T, bool> predicate)
+        {
+            Ensure.ArgumentNotNull(() => items);
+            Ensure.ArgumentNotNull(() => predicate);
+
+            foreach (T item in items)
+                if (predicate(item))
+                    return false;
+
+            return true;
+        }
     }
 }
