@@ -60,6 +60,7 @@
     <Compile Include="Eventing\NulloEvent.cs" />
     <Compile Include="Eventing\When_a_listener_interface_is_registered.cs" />
     <Compile Include="Eventing\When_subscribing_by_action.cs" />
+    <Compile Include="Eventing\When_subscribing_by_method.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subjects.cs" />
     <Compile Include="Tags.cs" />
