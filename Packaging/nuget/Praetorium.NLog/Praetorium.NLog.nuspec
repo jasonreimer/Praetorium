@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Praetorium.NLog</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <authors>Jason Reimer</authors>
         <owners>Jason Reimer</owners>
         <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
@@ -22,7 +22,7 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\..\Builds\net40\Praetorium.NLog.dll" target="lib\net40\Praetorium.NLog.dll" />
-        <file src="..\..\Builds\sl5\Praetorium.NLog.SL5.dll" target="lib\sl5\Praetorium.NLog.SL5.dll" />
+        <file src="..\..\..\Builds\net40\Praetorium.NLog.dll" target="lib\net40\Praetorium.NLog.dll" />
+        <file src="..\..\..\Builds\sl5\Praetorium.NLog.SL5.dll" target="lib\sl5\Praetorium.NLog.SL5.dll" />
     </files>
 </package>
