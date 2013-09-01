@@ -217,9 +217,6 @@
     <Compile Include="..\Praetorium\Logging\IExceptionFormatterFactory.cs">
       <Link>Logging\IExceptionFormatterFactory.cs</Link>
     </Compile>
-    <Compile Include="..\Praetorium\Logging\ILogContextScope.cs">
-      <Link>Logging\ILogContextScope.cs</Link>
-    </Compile>
     <Compile Include="..\Praetorium\Logging\ILogEntry.cs">
       <Link>Logging\ILogEntry.cs</Link>
     </Compile>
@@ -231,9 +228,6 @@
     </Compile>
     <Compile Include="..\Praetorium\Logging\ILoggingConfigurer.cs">
       <Link>Logging\ILoggingConfigurer.cs</Link>
-    </Compile>
-    <Compile Include="..\Praetorium\Logging\LogContextScope.cs">
-      <Link>Logging\LogContextScope.cs</Link>
     </Compile>
     <Compile Include="..\Praetorium\Logging\LogEntry.cs">
       <Link>Logging\LogEntry.cs</Link>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Praetorium.NLog</id>
-        <version>1.0.1</version>
+        <version>1.0.3</version>
         <authors>Jason Reimer</authors>
         <owners>Jason Reimer</owners>
         <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>

@@ -50,8 +50,9 @@
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.0.1.2\lib\sl5\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="Praetorium.SL5">
-      <HintPath>..\packages\Praetorium.1.0.4\lib\sl5\Praetorium.SL5.dll</HintPath>
+    <Reference Include="Praetorium.SL5, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Praetorium.1.0.5\lib\sl5\Praetorium.SL5.dll</HintPath>
     </Reference>
     <Reference Include="system" />
     <Reference Include="System.Core">
@@ -79,7 +80,7 @@
       <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
         <SilverlightProjectProperties />
       </FlavorProperties>
-      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="7e0168e8-f5c0-45b0-b991-3f9707706a39" />
+      <UserProperties ProjectLinkReference="7e0168e8-f5c0-45b0-b991-3f9707706a39" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
