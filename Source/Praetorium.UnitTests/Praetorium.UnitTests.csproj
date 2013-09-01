@@ -66,6 +66,7 @@
     <Compile Include="Utilities\ClosesSpecs.cs" />
     <Compile Include="Utilities\DerivesFromSpecs.cs" />
     <Compile Include="Utilities\GetEnumerableTypeSpecs.cs" />
+    <Compile Include="Utilities\IsGenericTypeOfSpecs.cs" />
     <Compile Include="Utilities\IsNullableOfSpecs.cs" />
     <Compile Include="Utilities\IsNullableSpecs.cs" />
     <Compile Include="Utilities\IsNullableTypeSpecs.cs" />

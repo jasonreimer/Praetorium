@@ -87,7 +87,7 @@ namespace Praetorium
         {
             if (type == null) return false;
 
-            return type.IsGenericTypeOf(typeof(Nullable<>));
+            return type.IsGenericTypeOf(typeof(Nullable<>)) && type.GetGenericArguments()[0].Equals(valueType);
         }
 
         public static bool IsStringConstant(this FieldInfo field)
