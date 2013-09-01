@@ -48,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigReaderSpecs.cs" />
+    <Compile Include="Configuration\When_getting_a_config_section_with_attribute.cs" />
+    <Compile Include="Configuration\When_getting_setting_with_default.cs" />
+    <Compile Include="Configuration\When_getting_setting_with_throw.cs" />
     <Compile Include="Eventing\ActionListenerContext.cs" />
     <Compile Include="Eventing\When_disposing_an_action_subscription.cs" />
     <Compile Include="Eventing\MessageNotReceivedBehavior.cs" />
