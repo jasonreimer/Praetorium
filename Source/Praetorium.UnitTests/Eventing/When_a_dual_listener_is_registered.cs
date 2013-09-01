@@ -12,6 +12,6 @@ namespace Praetorium.UnitTests.Eventing
 
         Behaves_like<MessageReceivedBehavior<NulloEvent>> a_nullo_listener;
         
-        Behaves_like<MessageReceivedBehavior<NulloEvent>> a_string_listener;
+        Behaves_like<MessageReceivedBehavior<string>> a_string_listener;
     }
 }
