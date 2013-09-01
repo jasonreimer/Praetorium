@@ -1,5 +1,4 @@
 ﻿using Machine.Specifications;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -7,6 +6,9 @@ namespace Praetorium.UnitTests.Utilities
 {
     class ClosesSpecs : TypeExtensionSpecs
     {
+        It true_when_comparing_closed_class_to_open_class = () =>
+            typeof(KeyedCollection<string,string>).Closes(typeof(KeyedCollection<,>)).ShouldBeTrue();
+
         It true_when_comparing_closed_class_to_open_interface = () =>
             typeof(string).Closes(typeof(IEnumerable<>)).ShouldBeTrue();
 

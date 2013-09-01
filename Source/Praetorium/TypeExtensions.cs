@@ -441,7 +441,8 @@ namespace Praetorium
 
         public static bool Closes(this Type type, Type openType)
         {
-            if (type == null || openType == null || type == openType || !type.ContainsGenericParameters)
+            if (type == null || openType == null || type == openType 
+                || type.ContainsGenericParameters || !openType.ContainsGenericParameters)
                 return false;
 
             if (type.IsGenericTypeOf(openType))
