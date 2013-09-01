@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Praetorium.Tests")]
+[assembly: AssemblyTitle("Praetorium.UnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Praetorium.Tests")]
+[assembly: AssemblyProduct("Praetorium.UnitTests")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9fb6bc91-46f2-4fa9-bbaf-596dd545f56e")]
+[assembly: Guid("425670d1-55fc-4366-8d37-b67607100068")]
 
 // Version information for an assembly consists of the following four values:
 //

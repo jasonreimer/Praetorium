@@ -358,6 +358,9 @@ namespace Praetorium
         /// </remarks>
         public static bool IsOrDerivesFrom(this Type type, Type baseType)
         {
+            if (type == null) return false;
+            if (baseType == null) return false;
+
             return type.Is(baseType) || type.DerivesFrom(baseType);
         }
 
