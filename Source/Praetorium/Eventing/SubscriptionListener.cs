@@ -23,6 +23,16 @@ namespace Praetorium.Eventing
             get { return _targetReference != null && (!_targetReference.IsAlive || _targetReference.Target == null); }
         }
 
+        public Type ListenerType
+        {
+            get { return GetType(); }
+        }
+
+        public IListener<TEvent> GetListener<TEvent>() where TEvent : class
+        {
+            return this as IListener<TEvent>;
+        }
+
         public void Handle(T message)
         {
             _method.Invoke(GetTarget(), new object[] { message });
@@ -38,14 +48,5 @@ namespace Praetorium.Eventing
             return _targetReference == null ? null : _targetReference.Target;
         }
 
-        public Type ListenerType
-        {
-            get { return GetType(); }
-        }
-
-        public IListener<TEvent> GetListener<TEvent>() where TEvent : class
-        {
-            return this as IListener<TEvent>;
-        }
     }
 }

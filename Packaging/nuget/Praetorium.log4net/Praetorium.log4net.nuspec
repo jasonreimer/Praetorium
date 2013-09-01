@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Praetorium.log4net</id>
+        <version>1.0.0</version>
+        <authors>Jason Reimer</authors>
+        <owners>Jason Reimer</owners>
+        <licenseUrl>https://raw.github.com/jasonreimer/Praetorium/master/license.txt</licenseUrl>
+        <projectUrl>https://github.com/jasonreimer/Praetorium</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Praetorium adapter for log4net.</description>
+        <tags>log4net</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="Praetorium" />
+                <dependency id="log4net" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\..\Builds\net40\Praetorium.log4net.dll" target="lib\net40\Praetorium.log4net.dll" />
+    </files>
+</package>

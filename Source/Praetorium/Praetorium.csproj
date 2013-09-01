@@ -108,10 +108,12 @@
     <Compile Include="Logging\IExceptionFormatter.cs" />
     <Compile Include="Logging\IExceptionFormatterBuilder.cs" />
     <Compile Include="Logging\IExceptionFormatterFactory.cs" />
+    <Compile Include="Logging\ILogContextScope.cs" />
     <Compile Include="Logging\ILogEntry.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\ILoggerFactory.cs" />
     <Compile Include="Logging\ILoggingConfigurer.cs" />
+    <Compile Include="Logging\LogContextScope.cs" />
     <Compile Include="Logging\LogEntry.cs" />
     <Compile Include="Logging\LoggerBase.cs" />
     <Compile Include="Logging\LoggingConfigurerStub.cs" />
