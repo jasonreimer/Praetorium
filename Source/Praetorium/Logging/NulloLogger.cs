@@ -9,12 +9,8 @@ namespace Praetorium.Logging
             return false;
         }
 
-        public override void Log(LogLevel logLevel, Exception exception, string message, params object[] args)
-        {
-        }
+        public override void Log(LogLevel logLevel, Exception exception, string message, params object[] args) {}
 
-        public override void Log(ILogEntry logEntry)
-        {
-        }
+        public override void Log(ILogEntry logEntry) { }
     }
 }
