@@ -23,7 +23,7 @@ namespace Praetorium.Logging
             Ensure.ArgumentNotNull(() => factory);
             Ensure.ArgumentNotNull(() => exception);
 
-            return factory.Get(exception).Format(exception);
+            return factory.Get(exception.GetType()).Format(exception);
         }
     }
 }

@@ -104,6 +104,7 @@
     <Compile Include="Logging\ExceptionFormatterConfigurationException.cs" />
     <Compile Include="Logging\ExceptionFormatterExtensions.cs" />
     <Compile Include="Logging\ExceptionFormatterFactory.cs" />
+    <Compile Include="ExceptionTypeComparer.cs" />
     <Compile Include="Logging\FaultExceptionFormatter.cs" />
     <Compile Include="Logging\IExceptionFormatter.cs" />
     <Compile Include="Logging\IExceptionFormatterBuilder.cs" />

@@ -158,7 +158,7 @@ namespace Praetorium.Logging
                 messageWriter.WriteLine("Inner Exception:");
                 messageWriter.WriteLine();
 
-                var formatter = _factory.Get(exception.InnerException);
+                var formatter = _factory.Get(exception.InnerException.GetType());
                 formatter.Write(exception.InnerException, messageWriter);
             }
         }

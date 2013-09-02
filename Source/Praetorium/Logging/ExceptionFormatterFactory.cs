@@ -6,7 +6,6 @@ namespace Praetorium.Logging
 {
     public class ExceptionFormatterFactory : IExceptionFormatterFactory
     {
-
         private readonly FunctionKeyedCollection<Type, IExceptionFormatterBuilder> _builders;
         private readonly IExceptionFormatter _defaultExceptionFormatter;
 
@@ -26,11 +25,6 @@ namespace Praetorium.Logging
         {
         }
 
-        public IExceptionFormatter Get<TException>(TException exception) where TException : Exception
-        {
-            return Get(typeof(TException));
-        }
-
         public IExceptionFormatter Get(Type exceptionType)
         {
             Ensure.ArgumentNotNull(() => exceptionType);
@@ -47,6 +41,5 @@ namespace Praetorium.Logging
 
             return builder != null ? builder.Get() : _defaultExceptionFormatter;
         }
-
     }
 }
