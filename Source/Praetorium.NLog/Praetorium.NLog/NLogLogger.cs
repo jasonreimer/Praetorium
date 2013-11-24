@@ -39,8 +39,10 @@ namespace Praetorium.NLog
             if (_logger.IsEnabled(nlogLevel))
             {
                 var messageBuilder = new StringBuilder()
-                    .AppendFormat("Message: {0}", entry.Message).AppendLine()
-                    .AppendIf(entry.Exception != null, ExceptionFormatterFactory.Format(entry.Exception));
+                    .AppendFormat("Message: {0}", entry.Message).AppendLine();
+
+                if (entry.Exception != null) 
+                    messageBuilder.Append(ExceptionFormatterFactory.Format(entry.Exception));
 
                 var logEventInfo = LogEventInfo.Create(nlogLevel, _logger.Name, messageBuilder.ToString(), entry.Exception);
 
