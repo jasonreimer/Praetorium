@@ -3,7 +3,7 @@ using Praetorium.Contexts;
 
 namespace Praetorium.NLog
 {
-    [LayoutRenderer("lc")]
+    [LayoutRenderer("wcf-ctx")]
     public class WcfLogContextLayoutRenderer : LogContextLayoutRendererBase
     {
         protected override IContext GetContext()

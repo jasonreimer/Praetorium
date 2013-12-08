@@ -19,7 +19,7 @@ using System.Linq;
 
 namespace $rootnamespace$
 {
-    public interface IQueryProvider
+    public interface IQueryService
     {
         IQueryable<T> Query<T>() where T : class;
         IEnumerable<T> SqlQuery<T>(string sql, params object[] parameters);

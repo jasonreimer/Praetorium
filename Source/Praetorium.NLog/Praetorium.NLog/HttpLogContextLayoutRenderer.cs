@@ -3,7 +3,7 @@ using Praetorium.Contexts;
 
 namespace Praetorium.NLog
 {
-    [LayoutRenderer("lc")] 
+    [LayoutRenderer("http-ctx")] 
     public class HttpLogContextLayoutRenderer : LogContextLayoutRendererBase
     {
         protected override IContext GetContext()

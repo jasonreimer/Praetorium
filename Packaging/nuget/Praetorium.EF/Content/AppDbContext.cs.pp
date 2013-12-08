@@ -22,7 +22,7 @@ using System.Linq;
 
 namespace $rootnamespace$
 {
-    public class AppDbContext : DbContext, IRepository, IQueryProvider, IStartable
+    public class AppDbContext : DbContext, IRepository, IQueryService, IStartable
     {
         public AppDbContext()
             : base(ConnectionNames.Primary)
@@ -91,12 +91,12 @@ namespace $rootnamespace$
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
-        IQueryable<T> IQueryProvider.Query<T>()
+        IQueryable<T> IQueryService.Query<T>()
         {
             return Set<T>().AsNoTracking();
         }
 
-        IEnumerable<T> IQueryProvider.SqlQuery<T>(string sql, params object[] parameters)
+        IEnumerable<T> IQueryService.SqlQuery<T>(string sql, params object[] parameters)
         {
             return Database.SqlQuery<T>(sql, parameters);
         }
