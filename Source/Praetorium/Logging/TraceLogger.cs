@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Text;
+using System.IO;
 
 namespace Praetorium.Logging
 {
@@ -32,18 +32,18 @@ namespace Praetorium.Logging
             if ((exception == null && message.IsNullOrWhiteSpace()) || !IsLoggable(logLevel))
                 return;
 
-            var messageBuilder = new StringBuilder();
+            var writer = new StringWriter();
 
-            if (message.IsNotNullOrWhiteSpace()) 
-            {
-                messageBuilder.AppendFormat(message, args);
-                messageBuilder.AppendLine();
-            }
+            if (message.IsNotNullOrWhiteSpace())
+                writer.WriteLine(message, args);
 
             if (exception != null)
-                messageBuilder.AppendLine(ExceptionFormatterFactory.Format(exception));
+            {
+                var formatter = ExceptionFormatterFactory.Get(exception.GetType());
+                formatter.Write(exception, writer);
+            }
 
-            _traceSource.TraceEvent(ConvertToTraceEventType(logLevel), _defaultEventId, messageBuilder.ToString());
+            _traceSource.TraceEvent(ConvertToTraceEventType(logLevel), _defaultEventId, writer.ToString());
         }
 
         public override void Log(ILogEntry logEntry)
@@ -51,19 +51,32 @@ namespace Praetorium.Logging
             Ensure.ArgumentNotNull(() => logEntry);
             Ensure.TypeSupported(() => logEntry, typeof(LogEntry));
 
-            var entry = (LogEntry)logEntry;
-            var eventType = ConvertToTraceEventType(entry.Level);
-
-            if (_traceSource.Switch.ShouldTrace(eventType))
+            var entry = (LogEntry)logEntry;;
+            
+            if (IsLoggable(entry.Level))
             {
-                var messageBuilder = new StringBuilder()
-                    .AppendFormat("Message: {0}", entry.Message).AppendLine()
-                    .AppendFormat("Event Id: {0}", entry.EventId).AppendLine()
-                    .AppendFormat("Priority: {0}", entry.Priority).AppendLine()
-                    .AppendIf(entry.Exception != null, ExceptionFormatterFactory.Format(entry.Exception));
+                var writer = new StringWriter();
 
-                _traceSource.TraceEvent(eventType, _defaultEventId, messageBuilder.ToString());
+                writer.WriteLine("Message: {0}", entry.Message);
+                writer.WriteLine("Event Id: {0}", entry.EventId);
+                writer.WriteLine("Priority: {0}", entry.Priority);
+
+                if (entry.Exception != null) 
+                {
+                    var formatter = ExceptionFormatterFactory.Get(entry.Exception.GetType());
+
+                    formatter.Write(entry.Exception, writer);
+                }
+
+                var eventId = entry.EventId is int ? (int)entry.EventId : _defaultEventId;
+
+                LogInternal(entry.Level, eventId, writer.ToString());
             }
+        }
+
+        protected virtual void LogInternal(LogLevel logLevel, int eventId, string message)
+        {
+            _traceSource.TraceEvent(ConvertToTraceEventType(logLevel), eventId, message);
         }
 
         private static TraceEventType ConvertToTraceEventType(LogLevel logLevel)

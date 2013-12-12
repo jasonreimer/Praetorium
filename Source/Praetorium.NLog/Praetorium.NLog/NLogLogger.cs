@@ -1,7 +1,7 @@
 ﻿using NLog;
 using Praetorium.Logging;
 using System;
-using System.Text;
+using System.IO;
 using LogLevel = Praetorium.Logging.LogLevel;
 using NLogLevel = NLog.LogLevel;
 
@@ -9,7 +9,6 @@ namespace Praetorium.NLog
 {
     public class NLogLogger : LoggerBase
     {
-        private readonly IExceptionFormatterFactory _exceptionFormatterFactory;
         private readonly Logger _logger;
 
         public NLogLogger(IExceptionFormatterFactory exceptionFormatterFactory)
@@ -17,10 +16,10 @@ namespace Praetorium.NLog
         {
         }
 
-        internal NLogLogger(Logger logger, IExceptionFormatterFactory exceptionFormatterFactory)
+        protected internal NLogLogger(Logger logger, IExceptionFormatterFactory exceptionFormatterFactory)
+            : base(exceptionFormatterFactory)
         {
             Ensure.ArgumentNotNull(() => logger, ref _logger);
-            Ensure.ArgumentNotNull(() => exceptionFormatterFactory, ref _exceptionFormatterFactory);
         }
 
         public override bool IsLoggable(LogLevel logLevel)
@@ -36,40 +35,35 @@ namespace Praetorium.NLog
             var entry = (LogEntry)logEntry;
             var nlogLevel = ConvertTo(entry.Level);
 
-            if (_logger.IsEnabled(nlogLevel))
-            {
-                var messageBuilder = new StringBuilder()
-                    .AppendFormat("Message: {0}", entry.Message).AppendLine();
-
-                if (entry.Exception != null) 
-                    messageBuilder.Append(ExceptionFormatterFactory.Format(entry.Exception));
-
-                var logEventInfo = LogEventInfo.Create(nlogLevel, _logger.Name, messageBuilder.ToString(), entry.Exception);
-
-                _logger.Log(logEventInfo);
-            }
+            Log(entry.Level, entry.Exception, entry.Message);
         }
 
         public override void Log(LogLevel logLevel, Exception exception, string message, params object[] args)
         {
             var nlogLevel = ConvertTo(logLevel);
 
-            if ((exception == null && message.IsNullOrWhiteSpace()) || !_logger.IsEnabled(nlogLevel))
+            if ((exception == null && message.IsNullOrWhiteSpace()) || !IsLoggable(logLevel))
                 return;
 
-            var messageBuilder = new StringBuilder();
+            var writer = new StringWriter();
 
             if (message.IsNotNullOrWhiteSpace())
-            {
-                messageBuilder.AppendFormat(message, args);
-                messageBuilder.AppendLine();
-            }
+                writer.WriteLine(message, args);
 
             if (exception != null)
-                messageBuilder.AppendLine(ExceptionFormatterFactory.Format(exception));
+            {
+                var formatter = ExceptionFormatterFactory.Get(exception.GetType());
 
-            var logEventInfo = LogEventInfo.Create(nlogLevel, _logger.Name, messageBuilder.ToString(), exception);
+                formatter.Write(exception, writer);
+            }
 
+            var logEventInfo = LogEventInfo.Create(nlogLevel, _logger.Name, writer.ToString(), exception);
+
+            Log(logEventInfo);
+        }
+
+        protected virtual void Log(LogEventInfo logEventInfo)
+        {
             _logger.Log(logEventInfo);
         }
 

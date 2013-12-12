@@ -77,7 +77,6 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="DisposableExtensions.cs" />
-    <Compile Include="Encryption\RSAKeyUtility.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="Errors.cs" />
     <Compile Include="Eventing\EventAggregator.cs" />
