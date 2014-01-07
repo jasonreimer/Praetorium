@@ -95,8 +95,16 @@ namespace Praetorium.Services
                 {
                     _logger.Debug("Closing client channel for '{0}' ...", proxyType.Name);
 
-                    channel.Close();
-
+                    try
+                    {
+                        channel.Close();
+                    }
+                    catch
+                    {
+                        channel.Abort();    
+                        throw;
+                    }
+                    
                     _logger.Debug("Client channel for '{0}' closed.", proxyType.Name);
                 }
             }
