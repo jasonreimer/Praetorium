@@ -1,6 +1,7 @@
 ﻿using Praetorium.Logging;
 using System;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace Praetorium.Services
 {
@@ -45,6 +46,46 @@ namespace Praetorium.Services
             try
             {
                 var value = action(service);
+
+                CloseChannel(channel, proxyType);
+
+                return value;
+            }
+            catch
+            {
+                AbortOrCloseChannel(channel, proxyType);
+                throw;
+            }
+        }
+
+        public async Task UseAsync<TServiceInterface>(Func<TServiceInterface, Task> action) where TServiceInterface : class
+        {
+            var proxyType = typeof(TServiceInterface);
+            var service = _serviceRegistry.GetProxy<TServiceInterface>();
+            var channel = service as IClientChannel;
+
+            try
+            {
+                await action(service);
+
+                CloseChannel(channel, proxyType);
+            }
+            catch
+            {
+                AbortOrCloseChannel(channel, proxyType);
+                throw;
+            }
+        }
+
+        public async Task<TResult> UseAsync<TServiceInterface, TResult>(Func<TServiceInterface, Task<TResult>> action) where TServiceInterface : class
+        {
+            var proxyType = typeof(TServiceInterface);
+            var service = _serviceRegistry.GetProxy<TServiceInterface>();
+            var channel = service as IClientChannel;
+
+            try
+            {
+                var value = await action(service);
 
                 CloseChannel(channel, proxyType);
 
