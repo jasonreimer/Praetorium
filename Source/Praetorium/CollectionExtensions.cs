@@ -39,14 +39,24 @@ namespace Praetorium
             return count;
         }
 
-        public static bool IsNotEmpty<T>(this ICollection<T> collection)
+        public static bool IsEmpty<T>(this IEnumerable<T> collection)
         {
-            return collection.Count != 0;
+            return collection == null || !collection.Any();
         }
 
-        public static bool IsEmpty<T>(this ICollection<T> collection)
+        public static bool IsNotEmpty<T>(this IEnumerable<T> collection)
         {
-            return collection.Count == 0;
+            return collection != null && collection.Any();
+        }
+
+        public static bool SafeIsEmpty<T>(this IEnumerable<T> collection)
+        {
+            return collection == null || !collection.Any();
+        }
+
+        public static bool SafeIsNotEmpty<T>(this IEnumerable<T> collection)
+        {
+            return collection != null && collection.Any();
         }
 
         public static T PushNew<T>(this Stack<T> stack) where T : new()
@@ -67,8 +77,10 @@ namespace Praetorium
         {
             Ensure.ArgumentNotNull(() => action);
 
-            if (!ignoreNullCollection)
-                Ensure.ArgumentNotNull(() => collection);
+            if (ignoreNullCollection && collection == null)
+                return collection;
+
+            Ensure.ArgumentNotNull(() => collection);
 
             foreach (var item in collection)
                 action(item);
@@ -131,8 +143,10 @@ namespace Praetorium
 
         public static bool None<T>(this IEnumerable<T> items, Func<T, bool> predicate)
         {
-            Ensure.ArgumentNotNull(() => items);
             Ensure.ArgumentNotNull(() => predicate);
+
+            if (items == null)
+                return true;
 
             foreach (T item in items)
                 if (predicate(item))

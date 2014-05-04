@@ -8,7 +8,8 @@ namespace Praetorium
         {
             try
             {
-                disposable.Dispose();
+                if (disposable != null)
+                    disposable.Dispose();
             }
             catch
             {

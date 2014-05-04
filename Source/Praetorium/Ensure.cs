@@ -169,6 +169,21 @@ namespace Praetorium
             field = value;
         }
 
+        public static void ArgumentNotValidIf<T>(bool condition, Func<T> argumentExpression, string messageFormat, params object[] args)
+        {
+            ArgumentNotValidIf(condition, argumentExpression, s => string.Format(messageFormat, args));
+        }
+
+        public static void ArgumentNotValidIf<T>(bool condition, Func<T> argumentExpression, Func<string, string> messageFunc)
+        {
+            if (condition)
+            {
+                var argumentName = ReflectionUtility.GetArgumentName(argumentExpression);
+
+                throw new ArgumentException(messageFunc(argumentName), argumentName);
+            }
+        }
+
         public static void EnumValueIsDefined<TEnum>(Func<TEnum> argumentExpression) where TEnum : struct
         {
             var enumType = typeof(TEnum);

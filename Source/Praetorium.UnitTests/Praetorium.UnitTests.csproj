@@ -35,6 +35,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.3.0.107\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.3.0.107\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications.0.5.15\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
@@ -50,6 +56,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigReaderSpecs.cs" />
@@ -70,6 +83,7 @@
     <Compile Include="Eventing\When_subscribing_by_action.cs" />
     <Compile Include="Eventing\When_subscribing_by_method.cs" />
     <Compile Include="Logging\When_getting_a_formatter_from_factory.cs" />
+    <Compile Include="Utilities\CollectionExtensionSpecs.cs" />
     <Compile Include="When_comparing_exception_types.cs" />
     <Compile Include="Logging\When_formatting_an_exception.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

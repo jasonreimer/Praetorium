@@ -33,7 +33,7 @@ namespace Praetorium
         /// <param name="builder">
         /// The builder.
         /// </param>
-        public static void ToUpper(this StringBuilder builder)
+        public static StringBuilder ToUpper(this StringBuilder builder)
         {
             Ensure.ArgumentNotNull(() => builder);
 
@@ -44,6 +44,8 @@ namespace Praetorium
                 if (char.IsLetter(c) && char.IsLower(c))
                     builder[index] = char.ToUpper(c);
             }
+
+            return builder;
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace Praetorium
         /// <param name="builder">
         /// The builder.
         /// </param>
-        public static void ToLower(this StringBuilder builder)
+        public static StringBuilder ToLower(this StringBuilder builder)
         {
             Ensure.ArgumentNotNull(() => builder);
 
@@ -63,6 +65,8 @@ namespace Praetorium
                 if (char.IsLetter(c) && char.IsUpper(c))
                     builder[index] = char.ToLower(c);
             }
+
+            return builder;
         }
 
 
