@@ -10,7 +10,6 @@ namespace Praetorium.Logging
     /// </summary>
     public class TextExceptionFormatter : IExceptionFormatter
     {
-
         private readonly IExceptionFormatterFactory _factory;
 
         public TextExceptionFormatter(IExceptionFormatterFactory exceptionFormatterFactory)
@@ -97,6 +96,7 @@ namespace Praetorium.Logging
             Ensure.ArgumentNotNull(() => messageWriter);
 
             WriteExceptionProperties(exception, messageWriter);
+            WriteSourceAndStackTrace(exception, messageWriter);
             WriteErrorInfo(exception, messageWriter);
             WriteVariables(exception.Data, messageWriter, "Exception Data:");
 
@@ -120,12 +120,12 @@ namespace Praetorium.Logging
 
             messageWriter.WriteLine("Exception: {0}", exception.GetType().FullName);
             messageWriter.WriteLine("Message: {0}", exception.Message);
+        }
 
+        protected virtual void WriteSourceAndStackTrace(Exception exception, TextWriter messageWriter)
+        {
 #if !SILVERLIGHT
-            if (exception.Source.IsNotNullOrWhiteSpace())
-            {
-                messageWriter.WriteLine("Source: {0}", exception.Source);
-            }
+            messageWriter.WriteLineIf(exception.Source.IsNotNullOrWhiteSpace(), "Source: {0}", exception.Source);
 #endif
 
             if (exception.StackTrace.IsNotNullOrWhiteSpace())
