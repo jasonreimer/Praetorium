@@ -6,7 +6,6 @@ namespace Praetorium.Logging
 {
     public class FaultExceptionFormatter : TextExceptionFormatter
     {
-
         public FaultExceptionFormatter(IExceptionFormatterFactory exceptionFormatterFactory)
             : base(exceptionFormatterFactory)
         {
@@ -25,6 +24,5 @@ namespace Praetorium.Logging
                                  "Code: {0}", faultException.Code.Name)
                     .WriteLineIf(faultException.Action.IsNotNullOrWhiteSpace(), "Action: {0}", faultException.Action);
         }
-
     }
 }

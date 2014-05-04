@@ -7,7 +7,7 @@ namespace Praetorium.Logging
 
         Type BaseExceptionType { get; }
 
-        IExceptionFormatter Get();
+        IExceptionFormatter Get(IExceptionFormatterFactory factory);
 
     }
 }

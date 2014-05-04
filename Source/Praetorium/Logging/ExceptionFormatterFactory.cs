@@ -39,7 +39,7 @@ namespace Praetorium.Logging
             var builder = _builders.GetValueOrDefault(exceptionType) 
                           ?? _builders.FirstOrDefault(x => exceptionType.DerivesFrom(x.BaseExceptionType));
 
-            return builder != null ? builder.Get() : _defaultExceptionFormatter;
+            return builder != null ? builder.Get(this) : _defaultExceptionFormatter;
         }
     }
 }
