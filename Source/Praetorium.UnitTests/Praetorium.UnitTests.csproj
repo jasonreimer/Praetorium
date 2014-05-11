@@ -47,6 +47,9 @@
     <Reference Include="Machine.Specifications.Clr4">
       <HintPath>..\packages\Machine.Specifications.0.5.15\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
@@ -86,6 +89,8 @@
     <Compile Include="Extensions\IOExtensionsSpecs.cs" />
     <Compile Include="Extensions\StringBuilderExtensionsSpecs.cs" />
     <Compile Include="Extensions\TypeExtensionsSpecs.cs" />
+    <Compile Include="Logging\JsonExceptionFormatter.cs" />
+    <Compile Include="Logging\JsonExceptionFormatterSpecs.cs" />
     <Compile Include="Logging\When_getting_a_formatter_from_factory.cs" />
     <Compile Include="Utilities\CollectionExtensionSpecs.cs" />
     <Compile Include="When_comparing_exception_types.cs" />
