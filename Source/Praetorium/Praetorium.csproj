@@ -100,8 +100,6 @@
     <Compile Include="IOExtensions.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="IStartable.cs" />
-    <Compile Include="ITypeCache.cs" />
-    <Compile Include="TypeCache.cs" />
     <Compile Include="IWorkItem.cs" />
     <Compile Include="KeyedCollectionExtensions.cs" />
     <Compile Include="Logging\ExceptionFormatterBuilder.cs" />

@@ -65,7 +65,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caching\TypeCacheSpecs.cs" />
     <Compile Include="Configuration\ConfigReaderSpecs.cs" />
     <Compile Include="Configuration\When_getting_a_config_section_with_attribute.cs" />
     <Compile Include="Configuration\When_getting_setting_with_default.cs" />
