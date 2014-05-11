@@ -779,6 +779,22 @@ namespace Praetorium
                 return ((FieldInfo)memberInfo).FieldType;
 
             return null;
-        } 
+        }
+
+        public static bool IsIndexer(this PropertyInfo property)
+        {
+            if (property == null)
+                return false;
+
+            return property.GetIndexParameters().IsNotEmpty();
+        }
+
+        public static bool IsNotIndexer(this PropertyInfo property)
+        {
+            if (property == null)
+                return false;
+
+            return property.GetIndexParameters().IsEmpty();
+        }
     }
 }

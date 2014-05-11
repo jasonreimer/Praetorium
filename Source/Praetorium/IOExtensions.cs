@@ -4,6 +4,15 @@ namespace Praetorium
 {
     public static class IOExtensions
     {
+        public static TextWriter WriteIf(this TextWriter writer, bool condition, string value)
+        {
+            Ensure.ArgumentNotNull(() => writer);
+
+            if (condition)
+                writer.Write(value);
+
+            return writer;
+        }
 
         public static TextWriter WriteIf(this TextWriter writer, bool condition, string format, params object[] args)
         {

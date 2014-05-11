@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 namespace Praetorium.Contexts
 {
-    public class WcfOrThreadHybridContext : ContextBase, IActivityContext, ISessionContext
+    public class WcfOrThreadHybridContext : ThreadContext
     {
-        [ThreadStatic]
-        private static readonly Dictionary<string, object> _values = new Dictionary<string, object>();
-
         protected override IDictionary<string, object> Values
         {
             get
@@ -19,7 +16,7 @@ namespace Praetorium.Contexts
                 }
                 catch (InvalidOperationException)
                 {
-                    return _values;
+                    return base.Values;
                 }
             }
         }

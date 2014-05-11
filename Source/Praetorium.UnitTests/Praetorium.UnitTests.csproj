@@ -65,10 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\TypeCacheSpecs.cs" />
     <Compile Include="Configuration\ConfigReaderSpecs.cs" />
     <Compile Include="Configuration\When_getting_a_config_section_with_attribute.cs" />
     <Compile Include="Configuration\When_getting_setting_with_default.cs" />
     <Compile Include="Configuration\When_getting_setting_with_throw.cs" />
+    <Compile Include="Contexts\ThreadContextSpecs.cs" />
     <Compile Include="Eventing\ActionListenerContext.cs" />
     <Compile Include="Eventing\When_disposing_an_action_subscription.cs" />
     <Compile Include="Eventing\MessageNotReceivedBehavior.cs" />
@@ -82,6 +84,9 @@
     <Compile Include="Eventing\When_a_listener_interface_is_registered.cs" />
     <Compile Include="Eventing\When_subscribing_by_action.cs" />
     <Compile Include="Eventing\When_subscribing_by_method.cs" />
+    <Compile Include="Extensions\IOExtensionsSpecs.cs" />
+    <Compile Include="Extensions\StringBuilderExtensionsSpecs.cs" />
+    <Compile Include="Extensions\TypeExtensionsSpecs.cs" />
     <Compile Include="Logging\When_getting_a_formatter_from_factory.cs" />
     <Compile Include="Utilities\CollectionExtensionSpecs.cs" />
     <Compile Include="When_comparing_exception_types.cs" />

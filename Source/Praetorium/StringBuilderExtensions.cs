@@ -5,6 +5,21 @@ namespace Praetorium
 {
     public static class StringBuilderExtensions
     {
+        public static StringBuilder AppendLineIf(this StringBuilder builder, bool condition)
+        {
+            if (condition)
+                builder.AppendLine();
+
+            return builder;
+        }
+
+        public static StringBuilder AppendLineIf(this StringBuilder builder, bool condition, string value)
+        {
+            if (condition)
+                builder.AppendLine(value);
+
+            return builder;
+        }
 
         public static StringBuilder AppendFormatIf(this StringBuilder builder, bool condition, string format, params object[] args)
         {
@@ -111,21 +126,21 @@ namespace Praetorium
             Ensure.ArgumentNotNull(() => source);
             Ensure.ArgumentNotNullOrWhiteSpace(() => value);
 
-            if (startIndex > source.Length - 1)
+            var maxSourceIndex = source.Length - 1;
+
+            if (source.Length == 0)
+                return -1;
+
+            if (startIndex > maxSourceIndex)
                 throw new ArgumentException("startIndex may not be greater than the length of the source.", "startIndex");
 
             if (startIndex < 0)
                 startIndex = 0;
 
             var firstChar = value[0];
-            var maxSourceIndex = source.Length - 1;
-
-            if (maxSourceIndex > source.Length - 1)
-                return -1;
 
             for (int sourceIndex = startIndex; sourceIndex <= maxSourceIndex; sourceIndex++)
             {
-
                 // Look for first character.
                 if (source[sourceIndex] != firstChar)
                     while (++sourceIndex <= maxSourceIndex && source[sourceIndex] != firstChar);
@@ -136,8 +151,7 @@ namespace Praetorium
                     int nextSourceIndex = sourceIndex + 1;
                     int endSourceIndex = sourceIndex + value.Length - 1;
 
-                    for (int valueIndex = 1; valueIndex < value.Length && source[nextSourceIndex] == value[valueIndex];
-                                  nextSourceIndex++, valueIndex++) ;
+                    for (int valueIndex = 1; valueIndex < value.Length && source[nextSourceIndex] == value[valueIndex]; nextSourceIndex++, valueIndex++);
 
                     if (nextSourceIndex - 1 == endSourceIndex)
                         //Found whole string.
@@ -147,6 +161,5 @@ namespace Praetorium
 
             return -1;
         }
-
     }
 }

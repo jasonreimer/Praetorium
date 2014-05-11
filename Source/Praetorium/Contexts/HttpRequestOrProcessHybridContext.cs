@@ -4,8 +4,10 @@ using System.Web;
 
 namespace Praetorium.Contexts
 {
-    public class HttpRequestOrThreadHybridContext : ThreadContext
+    public class HttpRequestOrProcessHybridContext : ContextBase, IContext
     {
+        private static readonly Dictionary<string, object> _values = new Dictionary<string, object>();
+
         protected override IDictionary<string, object> Values
         {
             get
@@ -13,7 +15,7 @@ namespace Praetorium.Contexts
                 var httpContext = HttpContext.Current;
 
                 if (httpContext == null)
-                    return base.Values;
+                    return _values;
 
                 return new DictionaryWrapper<string, object>(httpContext.Items);
             }
