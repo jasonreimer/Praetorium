@@ -154,5 +154,18 @@ namespace Praetorium
 
             return true;
         }
+
+        public static ICollection<T> Remove<T>(this ICollection<T> collection, Func<T, bool> predicate)
+        {
+            if (collection == null)
+                return collection;
+
+            var item = collection.FirstOrDefault(predicate);
+
+            if (item != null)
+                collection.Remove(item);
+
+            return collection;
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
 using Praetorium.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace Praetorium.UnitTests.Logging
 {
@@ -17,12 +18,25 @@ namespace Praetorium.UnitTests.Logging
         [Fact]
         public void Formatter_should_be_found_by_factory()
         {
-            var builder = new ExceptionFormatterBuilder<Exception, JsonExceptionFormatter>(f => new JsonExceptionFormatter());
+            var builder = new ExceptionFormatterBuilder<Exception, JsonExceptionFormatter>(f => new JsonExceptionFormatter(f));
             var factory = new ExceptionFormatterFactory(new[] { builder });
             string message = null;
 
             try
             {
+                //try
+                //{
+                //    var ex = new InvalidCastException("this didn't work");
+
+                //    ex.Data.Add("error-code", 12345);
+
+                //    throw ex;
+                //}
+                //catch (Exception inner)
+                //{
+                //    throw new InvalidOperationException("can't do that", inner);
+                //}
+
                 throw CreateException();
             }
             catch (Exception ex)
@@ -33,28 +47,6 @@ namespace Praetorium.UnitTests.Logging
             Trace.WriteLine(message);
 
             message.Should().NotBeNullOrWhiteSpace();
-        }
-
-        [Fact]
-        public void Formatter_write_should_output_exception_info_to_writer()
-        {
-            var writer = new StringWriter();
-            var formatter = new JsonExceptionFormatter();
-
-            try
-            {
-                throw CreateException();
-            }
-            catch (Exception ex)
-            {
-                formatter.Write(ex, writer);
-            }
-
-            var output = writer.ToString();
-
-            Trace.WriteLine(output);
-
-            output.Should().NotBeNullOrWhiteSpace();
         }
 
         private Exception CreateException()
@@ -69,6 +61,7 @@ namespace Praetorium.UnitTests.Logging
                     ErrorCode = "oops"
                 }
             };
+
             var ex = new FaultException<Fault>(fault, "this is the reason");
 
             ex.Data.Add("key1", "value");
